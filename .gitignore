@@ -1,0 +1,10 @@
+*.retry
+*.py[cod]
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
