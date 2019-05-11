@@ -1,0 +1,28 @@
+---
+- hosts: webservers
+  vars:
+    http_port: 80
+    max_clients: 200
+  tasks:
+  - name: ensure apache is at the latest version
+    become: yes
+    apt:
+      name: httpd
+      state: latest
+  - name: write the apache config file
+    become: yes
+    template:
+      src: httpd.j2
+      dest: /etc/httpd.conf
+  - name: ensure apache is running
+    become: yes
+    apt:
+      name: httpd
+      state: started
+
+
+
+
+
+
+
