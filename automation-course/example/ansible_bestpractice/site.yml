@@ -1,0 +1,8 @@
+---
+- name: deploy flask app
+  hosts: webserver
+  roles:
+    - role: flask
+      tags: flask
+    - role: haproxy
+      tags: haproxy

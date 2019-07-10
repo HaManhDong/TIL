@@ -1,0 +1,17 @@
+---
+- name: clone the source code of flask webserver
+  git: 
+    repo: "{{ flask_repo }}"
+    dest: "{{ deploy_folder }}"
+- name: create python virtualenv
+  command: virtualenv {{ venv_folder }} -p python2.7
+- name: Install requirements
+  pip: 
+    requirements: "{{ deploy_folder }}/flask/requirements.txt"
+    virtualenv: /user/home/venvs/myenv
+    virtualenv_python: python3.4
+- name: create a service in systemd
+  template:
+    src: app.service.j2
+    dest: "/etc/systemd/system/{{ app_name }}.service"
+  notify: restart flask

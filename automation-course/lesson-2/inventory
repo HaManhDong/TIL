@@ -2,7 +2,7 @@
 
 
 
-localhost   ansible_connection=local
+localhost   ansible_connection=local ansible_become=true ansible_become_password=donghm
 
 192.168.0.120 
 #192.168.0.120 ansible_user=donghm ansible_password=donghm

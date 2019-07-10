@@ -1,0 +1,13 @@
+---
+- name: install apt packages
+  apt: 
+    name: "{{ item }}"
+    update_cache: yes 
+    state: present
+  become: True
+  with_items:
+    - git
+    - python-dev
+    - python-pip
+    - python-virtualenv
+- include: flask.yml

@@ -1,0 +1,12 @@
+[Unit]
+Description=Flask web application
+After=network.target
+
+[Service]
+User=vt_admin
+WorkingDirectory="{{ deploy_folder }}/flask"
+ExecStart="{{ venv_folder }}/bin/flask run
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

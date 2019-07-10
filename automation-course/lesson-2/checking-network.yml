@@ -1,0 +1,8 @@
+- hosts: localhost
+  gather_facts: true
+  tasks:
+  - name: "Check Bond card speed"
+    debug:
+      msg: "OK! The speed of bond0 is {{ ansible_facts.bond0.speed }}"
+    when: ansible_facts.bond0.speed is version('20000', '>=')
+

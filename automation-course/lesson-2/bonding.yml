@@ -1,0 +1,16 @@
+- hosts: localhost
+  gather_facts: false
+  vars:
+    vlan_100: "bond0.100"
+    vlan_666: "bond1.666"
+  tasks:
+  - name: Copying bond0 config
+    template: src=ifcfg-bond0 dest=/etc/sysconfig/network-scripts/ifcfg-bond0
+  - name: Copying bond0 config
+    template: src=ifcfg-bond0 dest=/etc/sysconfig/network-scripts/ifcfg-bond1
+  - name: Copying Vlan 100 config
+    template: src="{{ vlan_100 }}" dest=/etc/sysconfig/network-scripts/ifcfg-"{{ vlan_100 }}"
+  - name: Copying Vlan 666 config
+    template: src="{{ vlan_666 }}" dest=/etc/sysconfig/network-scripts/ifcfg-"{{ vlan_666 }}"
+
+
